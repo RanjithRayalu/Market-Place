@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Products</h1>
+    <div class="product-container">
+        {% for product in products %}
+            <div class="product-card">
+                <h2>{{ product[1] }}</h2>
+                <p>Price: Rs . {{ product[2] }}</p>
+                <p>Description: {{ product[3] }}</p>
+                <form action="/add_to_cart" method="POST">
+                    <input type="hidden" name="product_id" value="{{ product[0] }}">
+                    <button type="submit" class="add-to-cart-button">Add to Cart</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

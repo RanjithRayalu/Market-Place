@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Previous Orders</h1>
+    <div class="order-container">
+        {% for order in orders %}
+            <div class="order-item">
+                <h3>{{ order[1] }}</h3>
+                <p>Price: Rs . {{ order[2] }}</p>
+                <p>Description: {{ order[3] }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

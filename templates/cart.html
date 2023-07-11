@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Cart</h1>
+    <div class="cart-container">
+        {% for item in cart_items %}
+            <div class="cart-item">
+                <h2>{{ item[1] }}</h2>
+                <p>Price: Rs . {{ item[2] }}</p>
+                <p>Description: {{ item[3] }}</p>
+                <form action="/delete_from_cart" method="POST">
+                    <input type="hidden" name="item_id" value="{{ item[0] }}">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+                <form action="/buy" method="POST">
+                    <input type="hidden" name="item_id" value="{{ item[0] }}">
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
